@@ -1,8 +1,9 @@
-import requests, feedparser, datetime, json, os
+import requests, feedparser, datetime, json, os, base64
 
 data = json.load(open(os.path.dirname(__file__)+'/ptrss.json'))
 hash_list = data.get("hash_list", [])
 data.update({"hash_list": []})
+torrent_link = ''
 
 for i in data["rss_list"]:
     r = feedparser.parse(i)
