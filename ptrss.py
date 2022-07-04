@@ -31,7 +31,7 @@ for i in r['arguments']['torrents']:
     if (datetime.datetime.now().timestamp() - i["doneDate"]) > 3600 * 24 * data["seeding_days"]:
         ids.append(i['id'])
 if ids:
-    payload = json.dumps({"arguments": {"ids": ids, "delete-local-data": true}, "method": "torrent-remove"})
+    payload = json.dumps({"arguments": {"ids": ids, "delete-local-data": True}, "method": "torrent-remove"})
     r = requests.post(url, data=payload, headers=headers)
 
 payload = json.dumps({"arguments": {"path": data["path"]}, "method": "free-space"})
