@@ -1,0 +1,12 @@
+{
+  "rpc_url": "http://127.0.0.1:9091/transmission/rpc",
+  "username": "admin",
+  "passwd": "admin",
+  "seeding_days": 7,
+  "path": "/path/to/download/directory/",
+  "disk_free": 200,
+  "rss_list": [
+    "https://example1.com/torrentrss.php",
+    "https://example2.com/torrentrss.php"
+  ]
+}
