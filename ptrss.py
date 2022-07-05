@@ -7,8 +7,7 @@ torrent_link = ''
 
 for i in data["rss_list"]:
     r = feedparser.parse(i)
-    if not r.entries[0].guid in hash_list:
-        torrent_link = r.entries[0].enclosures[0].href
+    torrent_link = next((i.enclosures[0].href for i in r.entries if not i.guid in hash_list), '')
     data["hash_list"].extend(list(i.guid for i in r.entries))
 
 json.dump(data, open(os.path.dirname(__file__)+'/ptrss.json', 'w'), indent=2)
