@@ -24,7 +24,7 @@ r = requests.post(url, data=payload, headers=headers).json()
 ids = []
 for i in r['arguments']['torrents']:
     if i['status'] == 4:
-        exit()
+        os.exit()
     if i['status'] == 0:
         continue
     if (datetime.datetime.now().timestamp() - i["doneDate"]) > 3600 * 24 * data["seeding_days"]:
@@ -36,7 +36,7 @@ if ids:
 payload = json.dumps({"arguments": {"path": data["path"]}, "method": "free-space"})
 r = requests.post(url, data=payload, headers=headers).json()
 if r['arguments']['size-bytes']/1024/1024/1024 <= data["disk_free"]:
-    exit()
+    os.exit()
 
 if torrent_link:
     torrentAdd = json.dumps({"arguments": {"filename": torrent_link, "download-dir": data["path"]}, "method": "torrent-add"})
